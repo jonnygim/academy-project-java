@@ -1,6 +1,8 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Optional;
 
 import domain.Lecture;
 
@@ -8,17 +10,13 @@ public class EndView {
 
 	// 개설된 모든 강의 출력
 	public static void lectureListView(ArrayList<Lecture> allLecture) {
-		if (allLecture != null) {
-			int lectureSize = allLecture.size();
+		Optional<Object> datas = Optional.ofNullable(allLecture);
 
-			for (int index = 0; index < lectureSize; index++) {
-				if (allLecture.get(index) != null) {
-					System.out.println("[개설된 강의 : " + (index + 1) + "] " + allLecture.get(index));
-				}
-			}
-		} else {
-			System.out.println("현재 개설된 강의가 없습니다.");
-		}
+		allLecture.stream().forEach(v -> {
+			System.out.println("[진행 중인 project] " + v);
+		});
+
+		datas.orElse("현재 개설된 강의가 없습니다.");
 	}
 
 	// 강의 이름 입력 받아 출력

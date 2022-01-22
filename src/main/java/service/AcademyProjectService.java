@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import exception.LectureNameDuplicationException;
 import exception.LectureNotFoundException;
@@ -35,12 +36,13 @@ public class AcademyProjectService {
 	
 	// 강의 정보 검색
 	public Lecture getLecture(String lectureName) throws LectureNotFoundException {
-		for(Lecture l : lectureList) {
-			if(l.getLectureName().equals(lectureName)) {
-				return l;
-			}
+		Optional<Lecture> lec = lectureList.stream().filter(v -> v.getLectureName().equals(lectureName)).findAny();
+
+		if(!lec.isPresent()) {
+			throw new LectureNotFoundException("요청하신 강의는 존재하지 않습니다.");
 		}
-		throw new LectureNotFoundException("요청하신 강의는 존재하지 않습니다.");
+
+		return lec.get();
 	}
 	
 	// 강의 이름으로 수강생 출력
