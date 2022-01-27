@@ -1,5 +1,10 @@
 package domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class Student {
 	
 	// 수강생 번호
@@ -21,55 +26,6 @@ public class Student {
 		super();
 	}
 
-	public Student(int sNo, String name, String contactInformation, String lectureName, String regDate) {
-		super();
-		this.sNo = sNo;
-		this.name = name;
-		this.contactInformation = contactInformation;
-		this.lectureName = lectureName;
-		this.regDate = regDate;
-	}
-
-	public int getsNo() {
-		return sNo;
-	}
-
-	public void setsNo(int sNo) {
-		this.sNo = sNo;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getContactInfomation() {
-		return contactInformation;
-	}
-
-	public void setContactInfomation(String contactInformation) {
-		this.contactInformation = contactInformation;
-	}
-
-	public String getLectureName() {
-		return lectureName;
-	}
-
-	public void setLectureName(String lectureName) {
-		this.lectureName = lectureName;
-	}
-
-	public String getRegDate() {
-		return regDate;
-	}
-
-	public void setRegDate(String regDate) {
-		this.regDate = regDate;
-	}
-
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -86,6 +42,4 @@ public class Student {
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
 }
