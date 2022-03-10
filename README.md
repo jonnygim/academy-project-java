@@ -1,2 +1,2 @@
-# academyProject-java
+# academy-project-java
 mini-project-java
